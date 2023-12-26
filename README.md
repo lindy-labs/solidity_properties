@@ -1,66 +1,84 @@
-## Foundry
+# Table of contents
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+- [Table of contents](#table-of-contents)
+- [Properties](#properties)
+  - [Testing the properties with symbolic testing](#testing-the-properties-with-symbolic-testing)
+    - [ERC20 tests](#erc20-tests)
+    - [ERC721 Tests](#erc721-tests)
+- [How to contribute to this repo?](#how-to-contribute-to-this-repo)
 
-Foundry consists of:
+# Properties
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+This Foundry-based repository contains 59 code properties for:
 
-## Documentation
+- [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token: [27 properties](PROPERTIES.md#erc20);
+- [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token: [21 properties](PROPERTIES.md#erc721);
+- [ERC1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) token: [11 properties](PROPERTIES.md#erc721).
 
-https://book.getfoundry.sh/
+The goals of these properties are to:
 
-## Usage
+- Detect vulnerabilities
+- Ensure adherence to relevant standards
+- Provide educational guidance for writing symbolic properties
 
-### Build
+The properties can be used through symbolic tests with [Ethereum's hevm](https://github.com/ethereum/hevm).
 
-```shell
-$ forge build
+## Testing the properties with symbolic testing
+
+1. Install [Foundry](https://book.getfoundry.sh/getting-started/installation);
+2. Install [Ethereum's hevm](https://github.com/ethereum/hevm#installation);
+3. Download this repo and copy the example of interest into the Foundry's folder `src` ([ERC20](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/hevm/Examples/ERC20Examples/Openzeppelin), [ERC721](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/hevm/Examples/ERC721Examples/NFT-Marketplace), or [ERC1155](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/hevm/Examples/ERC1155Examples/Openzeppelin)) and corresponding properties into Foundry's folder `test` ([ERC20](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/hevm/Properties/ERC20SymbolicProperties.sol), [ERC721](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/hevm/Properties/ERC721SymbolicProperties.sol), or [ERC1155](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/hevm/Properties/ERC1155SymbolicProperties.sol)).
+ 
+### Run
+
+Run hevm:
+
+- Just execute: `hevm test`
+
+#### Example: Output for a compliant token
+
+If the token under test is compliant and no properties will fail during symbolic testing, the hevm output should be similar to the screen below:
+
+``` JavaScript
+$ hevm test
+Exploring contract
+Simplifying expression
+Explored contract (31 branches)
+Checking for reachability of 4 potential property violation(s)
+[PASS] prove_IncreaseAllowance(address,address,uint256)
+...
 ```
 
-### Test
+#### Example: Output for a non-compliant token
 
-```shell
-$ forge test
+For this example, the ExampleToken's approval function was modified to perform no action:
+
+```
+function approve(address spender, uint256 amount) public virtual override(ERC20) returns (bool) {
+  // do nothing
+  return true;
+}
 ```
 
-### Format
+In this case, the hevm output should be similar to the screen below, notice that all functions that rely on `approve()` to work correctly will have their assertions broken, and will report the situation.
 
-```shell
-$ forge fmt
+``` JavaScript
+$ hevm test
+Exploring contract
+Simplifying expression
+Explored contract (7 branches)
+Checking for reachability of 2 potential property violation(s)
+[FAIL] prove_Approve(address,address,uint256)
+...
+Failure: prove_Approve(address,address,uint256)
+
+  Counterexample:
+  
+    result:   Revert: 0x4e487b710000000000000000000000000000000000000000000000000000000000000001
+    calldata: prove_Approve(0x0000000001010000000000000000000000000000,0x0000000000000000000000000000000080000000,115792089237316195423570985008687907853269984665640564039457584007913129639935)
+...  
 ```
 
-### Gas Snapshots
+# How to contribute to this repo?
 
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Contributions are welcome! Any question, suggestion or participation, please contact us: <info@lindylabs.net>.
