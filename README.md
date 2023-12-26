@@ -13,7 +13,7 @@ This Foundry-based repository contains 59 code properties for:
 
 - [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token: [27 properties](PROPERTIES.md#erc20);
 - [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token: [21 properties](PROPERTIES.md#erc721);
-- [ERC1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) token: [11 properties](PROPERTIES.md#erc721).
+- [ERC1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) token: [11 properties](PROPERTIES.md#erc1155).
 
 The goals of these properties are to:
 
@@ -27,7 +27,7 @@ The properties can be used through symbolic tests with [Ethereum's hevm](https:/
 
 1. Install [Foundry](https://book.getfoundry.sh/getting-started/installation);
 2. Install [Ethereum's hevm](https://github.com/ethereum/hevm#installation);
-3. Download this repo and copy the example of interest into the Foundry's folder `src` ([ERC20](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/hevm/Examples/ERC20Examples/Openzeppelin), [ERC721](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/hevm/Examples/ERC721Examples/NFT-Marketplace), or [ERC1155](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/hevm/Examples/ERC1155Examples/Openzeppelin)) and corresponding properties into Foundry's folder `test` ([ERC20](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/hevm/Properties/ERC20SymbolicProperties.sol), [ERC721](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/hevm/Properties/ERC721SymbolicProperties.sol), or [ERC1155](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/hevm/Properties/ERC1155SymbolicProperties.sol)).
+3. Download this repo and copy the example of interest into the Foundry's folder `src` ([ERC20](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/Examples/ERC20Examples/Openzeppelin), [ERC721](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/Examples/ERC721Examples/NFT-Marketplace), or [ERC1155](https://github.com/lindy-labs/solidity-formal-verification-experiments/tree/main/Examples/ERC1155Examples/Openzeppelin)) and corresponding properties into Foundry's folder `test` ([ERC20](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/Properties/ERC20SymbolicProperties.sol), [ERC721](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/Properties/ERC721SymbolicProperties.sol), or [ERC1155](https://github.com/lindy-labs/solidity-formal-verification-experiments/blob/main/Properties/ERC1155SymbolicProperties.sol)).
  
 ### Run
 
