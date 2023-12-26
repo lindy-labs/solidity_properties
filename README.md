@@ -5,6 +5,7 @@
   - [Testing the properties with symbolic testing](#testing-the-properties-with-symbolic-testing)
     - [ERC20 tests](#erc20-tests)
     - [ERC721 Tests](#erc721-tests)
+    - [ERC1155 Tests](#erc1155-tests)
 - [How to contribute to this repo?](#how-to-contribute-to-this-repo)
 
 # Properties
