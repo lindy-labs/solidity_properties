@@ -4,17 +4,19 @@
 - [Properties](#properties)
   - [Testing the properties with symbolic testing](#testing-the-properties-with-symbolic-testing)
     - [ERC20 tests](#erc20-tests)
-    - [ERC721 Tests](#erc721-tests)
-    - [ERC1155 Tests](#erc1155-tests)
+    - [ERC721 tests](#erc721-tests)
+    - [ERC1155 tests](#erc1155-tests)
+    - [ERC4626 tests](#erc4626-tests)
 - [How to contribute to this repo?](#how-to-contribute-to-this-repo)
 
 # Properties
 
 This Foundry-based repository contains 59 code properties for:
 
-- [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token: [27 properties](PROPERTIES.md#erc20);
-- [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token: [21 properties](PROPERTIES.md#erc721);
-- [ERC1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) token: [11 properties](PROPERTIES.md#erc1155).
+- [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) token: [65 properties](PROPERTIES.md#erc20);
+- [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) token: [15 properties](PROPERTIES.md#erc721);
+- [ERC1155](https://ethereum.org/en/developers/docs/standards/tokens/erc-1155/) token: [28 properties](PROPERTIES.md#erc1155);
+- [ERC4626](https://ethereum.org/en/developers/docs/standards/tokens/erc-4626/) token: [46 properties](PROPERTIES.md#erc4626).
 
 The goals of these properties are to:
 
@@ -28,7 +30,7 @@ The properties can be used through symbolic tests with [Ethereum's hevm](https:/
 
 1. Install [Foundry](https://book.getfoundry.sh/getting-started/installation);
 2. Install [Ethereum's hevm](https://github.com/ethereum/hevm#installation);
-3. Download this repo and copy the example of interest into the Foundry's folder `src` ([ERC20](https://github.com/lindy-labs/solidity_properties/tree/main/Examples/ERC20Examples/Openzeppelin), [ERC721](https://github.com/lindy-labs/solidity_properties/tree/main/Examples/ERC721Examples/NFT-Marketplace), or [ERC1155](https://github.com/lindy-labs/solidity_properties/tree/main/Examples/ERC1155Examples/Openzeppelin)) and corresponding properties into Foundry's folder `test` ([ERC20](https://github.com/lindy-labs/solidity_properties/blob/main/Properties/ERC20SymbolicProperties.sol), [ERC721](https://github.com/lindy-labs/solidity_properties/blob/main/Properties/ERC721SymbolicProperties.sol), or [ERC1155](https://github.com/lindy-labs/solidity_properties/blob/main/Properties/ERC1155SymbolicProperties.sol)).
+3. Download this repo and copy the example of interest into the Foundry's folder `src` ([ERC20](https://github.com/lindy-labs/solidity_properties/tree/main/hevm/Examples/ERC20Examples/Openzeppelin), [ERC721](https://github.com/lindy-labs/solidity_properties/tree/main/hevm/Examples/ERC721Examples/NFT-Marketplace), or [ERC1155](https://github.com/lindy-labs/solidity_properties/tree/main/hevm/Examples/ERC1155Examples/Openzeppelin)) and corresponding properties into Foundry's folder `test` ([ERC20](https://github.com/lindy-labs/solidity_properties/blob/main/hevm/Properties/ERC20SymbolicProperties.sol), [ERC721](https://github.com/lindy-labs/solidity_properties/blob/main/hevm/Properties/ERC721SymbolicProperties.sol), or [ERC1155](https://github.com/lindy-labs/solidity_properties/blob/main/hevm/Properties/ERC1155SymbolicProperties.sol)).
  
 ### Run
 
