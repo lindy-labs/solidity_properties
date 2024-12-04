@@ -115,12 +115,12 @@ contract ERC1155ymbolicProperties is Test {
         try token.safeTransferFrom(address(from), address(to), id, amount, data) {assert(false);} catch {assert(true);}
     }
 
-    // proveFail_safeTransferFromWhenSenderIsNotMSGSender: Negated case of safeTransferFrom. Expects revert when sende is not msg.sender.
+    // proveFail_safeTransferFromWhenSenderIsNotApprovedForAll: Negated case of safeTransferFrom. Expects revert when sender is not approved.
     function proveFail_safeTransferFromWhenSenderIsNotApprovedForAll(uint256 id, uint256 amount) public {
         vm.prank(address(from));
-        token.setApprovalForAll(address(from), true);
+        token.setApprovalForAll(address(to), false);
         bytes memory data;
-        vm.prank(address(from));
+        vm.prank(address(to));
         try token.safeTransferFrom(address(from), address(to), id, amount, data) {assert(false);} catch {assert(true);}
     }
 
